@@ -5,6 +5,13 @@ AS rivers_per_country
 WHERE number_of_rivers > 15;
 
 
+    /*Opción para que se muestre el nombre y no el código*/
+SELECT name FROM Country NATURAL JOIN (Select Country AS Code, number_of_rivers 
+FROM (SELECT Country, COUNT (*) AS number_of_rivers FROM geo_River GROUP BY Country) 
+AS rivers_per_country
+WHERE number_of_rivers > 15) AS countries_with_many_rivers;
+
+
 
 /*Ejercicio No. 2. Obtenga el nombre de los países que pertenecen o son miembros de la UNESCO o de UNASUR.*/
 
